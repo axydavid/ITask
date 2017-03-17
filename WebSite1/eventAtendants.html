@@ -1,0 +1,34 @@
+﻿
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    <link href="tableStyle.css" rel="stylesheet" />
+    <script src="jQuery-1.9.1.js"></script>
+    <script src="scriptEventAttender.js"></script>
+    <script src="tableSorter.js"></script>
+
+</head>	
+<!--    SELECT checkin, SUM(checkin) AS result FROM sys.users;-->
+       event ID: <input type="text" id="ID"><button type="button" onclick="history.go(-1)">Back</button><br>
+<table id="tbDetails" width="800" runat="server" style="border-collapse: collapse;" clientidmode="Static">
+    <thead>
+        <tr>
+            <th style="cursor:pointer;text-align:left;" onclick="sortTable(0);">ID</th>
+            <th style="cursor:pointer;text-align:left;" onclick="sortTable(1);">Name</th>
+            <th style="cursor:pointer;text-align:left;" onclick="sortTable(2);">Surname</th>
+            <th style="cursor:pointer;text-align:left;" onclick="sortTable(3);">E-mail</th>
+            <th style="cursor:pointer;text-align:left;" onclick="sortTable(4);">Phone</th>
+            <th style="cursor:pointer;text-align:left;" onclick="sortTable(5);">Attendees</th>
+            <th style="cursor:pointer;text-align:left;" onclick="sortTable(6);">Registration Time</th>
+            <th style="cursor:pointer;text-align:left;" onclick="sortTable(7);">Checked In</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+</html>

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+
+<link rel="stylesheet" type="text/css" href="jquery.datetimepicker.css"/>
+<script src="jQuery-1.9.1.js"></script>
+<script src="jquery.datetimepicker.full.min.js"></script>
+</head>
+
+
+<body>
+    <form action="http://localhost:49943/WebService.asmx/EventCreate" method="POST" style="border: 2px solid black;" target="_blank">
+
+        <table bordercolor="#dcdcdc"  rules="none" cellspacing="0" cellpadding="4">
+            <tbody>
+
+<tr>
+	<td class="frmHeader" style="border-right: 2px solid white;" background="#dcdcdc">Parameter</td>
+	<td class="frmHeader" background="#dcdcdc">Value</td>
+</tr>
+
+                        
+                          <tr>
+                            <td class="frmText" style="color: #000000; font-weight: normal;">eventName:</td>
+                            <td><input class="frmInput" size="50" name="eventName" type="text"></td>
+                          </tr>
+                        
+                          <tr>
+                            <td class="frmText" style="color: #000000; font-weight: normal;">eventAmount:</td>
+                            <td><input class="frmInput" size="50" name="eventAmount" type="text"></td>
+                          </tr>
+                        
+                          <tr>
+                            <td class="frmText" style="color: #000000; font-weight: normal;">eventDate:</td>
+                            <td><input class="frmInput" id="datetimepicker_mask" size="50" name="eventDate" type="text"></td>
+                          </tr>
+                        
+                          <tr>
+                            <td class="frmText" style="color: #000000; font-weight: normal;">eventAdmins:</td>
+                            <td><input class="frmInput" size="50" name="eventAdmins" type="text"></td>
+                          </tr>
+                        
+                          <tr>
+                            <td class="frmText" style="color: #000000; font-weight: normal;">img:</td>
+                            <td><input class="frmInput" size="50" name="img" type="text"></td>
+                          </tr>
+                        
+                        
+        </table>
+                 <textarea name="text" cols=35 rows=3 class="frmInput" type="text" size="50"></textarea>
+                  <input onmouseup="done()" class="button" type="submit" value="Invoke">
+
+    </form>
+    <tr id="table">
+    </tr>
+
+</body>
+    <script>
+        $('#datetimepicker_mask').datetimepicker({
+            mask: '39-19-9999 29:59:23'
+        });
+
+
+</script>
+</html>

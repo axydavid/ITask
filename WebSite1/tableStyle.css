@@ -1,0 +1,18 @@
+﻿td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #F2F2F2;
+}
+.greenBg {
+    background-color: #C4FFC5 !important;
+}
+.yellowBg {
+    background-color: #ffff69 !important;
+}
+#tbDetails {
+    background:rgba(255, 255, 255, 0.7);
+}

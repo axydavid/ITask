@@ -1,0 +1,43 @@
+﻿
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <title></title>
+    <link href="tableStyle.css" rel="stylesheet" />
+    <script src="jQuery-1.9.1.js"></script>
+    <script type="text/javascript" src="scriptEvents.js"></script>
+    <script src="tableSorter.js"></script>
+    <script>
+        $(document).ready(function () {
+            var url;
+            $("#tbDetails").delegate('tr', 'click', function () {
+                $(url =this.cells['1'].innerHTML);
+                window.location.assign("registerUser.html#p=" + url);
+            });
+        });
+
+    </script>
+</head>
+
+<table id="tbDetails" width="800" runat="server" style="border-collapse: collapse;background:rgba(255, 255, 255, 0.7);" clientidmode="Static">
+    <thead>
+        <tr>
+            <th style="cursor:pointer;text-align:left;" >IMG</th>
+            <th style="cursor:pointer;text-align:left;" onclick="sortTable(1);">Event ID</th>
+            <th style="cursor:pointer;text-align:left;" onclick="sortTable(2);">Event Name</th>
+            <th style="cursor:pointer;text-align:left;" onclick="sortTable(3);">Maximum Atendants</th>
+            <th style="cursor:pointer;text-align:left;" onclick="sortTable(4);">Event Time</th>
+            <th style="cursor:pointer;text-align:left;" onclick="sortTable(5);">Event Created</th>
+            <th style="cursor:pointer;text-align:left;" onclick="sortTable(6);">Event Admins</th>
+            <th style="cursor:pointer;text-align:left;" onclick="sortTable(6);">Event Info</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+</html>

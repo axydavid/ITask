@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="index.css" rel="stylesheet" />
+</head>
+<script src="jQuery-1.9.1.js"></script>
+    <script>
+        var data11;
+        function load_box() {
+            document.getElementById("window").outerHTML = '<object id="window" style="top:52px;width: 100%;height: 90%;" type="text/html" data="adminBox.html" ></object>';
+
+        }
+        function hide_box() {
+            document.getElementById("window").innerHTML = '';
+
+        }
+        function load_events() {
+            document.getElementById("window").outerHTML = '<object id="window" style="top:52px;width: 100%;height: 90%;" type="text/html" data="events.html" ></object>';
+
+        }
+        function show_login(){ 
+            document.getElementById("loginwindow").style.display = 'block';
+            window.setTimeout(function () {
+                document.getElementById('userinput').focus();
+                document.getElementById("loginwindow").addEventListener("blur", hide_login, true);
+
+            }, 0);
+        }
+        function hide_login() {
+            window.setTimeout(function () {
+
+                if (!$("#userinput").is(":focus") && !$("#passinput").is(":focus") && !$("#logIN").is(":focus")) {
+                    document.getElementById("loginwindow").removeEventListener("blur", hide_login);
+                    $("#loginwindow").fadeOut("100");
+                }
+            }, 0);
+        }
+        function postOnClick() {
+            var userPass = document.getElementById('passinput');
+            var userName = document.getElementById('userinput');
+            var data = { "user": userName.value , "password": userPass.value }
+            $.ajax({
+                data: JSON.stringify(data),
+                dataType: "json",
+                url: "http://localhost:49943/WebService.asmx/InitializeComponent",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+
+                success: function (data1) {
+                    if(data1.d == "OK"){
+                        hide_login();
+                        document.getElementById('passinput').value = "";
+                        document.getElementById('userinput').value = "";
+                        $('#logina').val("Log Out");
+                        $('#logina').on('mouseup mousedown', function (e) {
+                            e.preventDefault();
+                            logOut();
+                        });
+                        load_box();
+
+                    } else {
+                        document.getElementById("userinput").style.borderColor = "red";
+                        document.getElementById("passinput").style.borderColor = "red";
+                        
+                    }
+                },
+
+                error: function (data1) {
+                    getElementById('userinput').style.border = "1px solid red";
+                    getElementById('passinput').style.border = "1px solid red";
+                }
+            });
+        }
+        function logOut() {
+            var data = { "user": "user", "password": "user" }
+            $.ajax({
+                data: JSON.stringify(data),
+                dataType: "json",
+                url: "http://localhost:49943/WebService.asmx/InitializeComponent",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+
+                success: function (data1) {
+                    if (data1.d == "OK") {
+                        hide_box();
+                        hide_login();
+                        $('#logina').val("Log Out");
+                        $('#logina').on('mouseup mousedown', function (e) {
+                            e.preventDefault();
+                            postOnClick();
+                        });
+                    }
+                }
+            });
+        }
+
+    </script>
+ <body>
+ <div id ="window1" class="fullscreen-bg">
+    <video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
+
+            <source src="Armchair.mp4" type="video/mp4">
+    </video>
+</div>
+ <div id="header">  
+  <ul id="nav">
+    <li style="float:left;margin-left: 15%;"><a href="#">Home</a></li>
+    
+  <li style="float:right;margin-right: 15%;"><a onmousedown="load_events()" href="#">Events</a></li>
+            <li id="login"><a id="logina" onmousedown="show_login()" href="#">Log In</a></li>    
+
+  </ul> 
+
+</div>
+     <div id="window"></div>
+</body>
+        <form id="loginwindow" onblur="hide_login()" target="_blank" action="http://localhost:49943/WebService.asmx/InitializeComponent" method="POST">                      
+                        
+                          <table rules="none" cellspacing="0" cellpadding="4">
+                          <tbody>
+                        
+                            <td><input class="frmInput" id="userinput" name="user" placeholder="User Name" type="text"></td>
+                        
+                            <td><input class="frmInput" id="passinput" name="password" placeholder="Password Name" type="text"></td>
+                        
+                            <td align="right"><button type="button" onclick="postOnClick()">Log In</button>
+</td>
+                        </tbody></table>
+                      
+
+                    </form>
+</html>
