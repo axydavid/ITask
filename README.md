@@ -1,2 +1,2 @@
 # ITask
-just as taso for internship
+A task for ikea.
